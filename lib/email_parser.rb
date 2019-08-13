@@ -1,14 +1,11 @@
 class EmailParser
+  attr_accessor :emails
 
-  attr_accessor :email
-  def  initialize(emails)
-    @email = emails
+   def initialize(emails)
+    @emails = emails
   end
 
-  def parse
-    email_array = @email.split(/[, ]/).uniq
-    email_array.reject! {|element| element.empty?}
-    email_array
+   def parse
+    self.emails.split(", ").map{|e| e.split(" ")}.flatten.uniq
   end
-
 end
